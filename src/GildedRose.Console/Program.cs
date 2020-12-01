@@ -2,16 +2,17 @@
 
 namespace GildedRose.Console
 {
-    class Program
+    public class Program
     {
-        IList<Item> Items;
+        public IList<Item> Items;
+
         static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
 
             var app = new Program()
-                          {
-                              Items = new List<Item>
+            {
+                Items = new List<Item>
                                           {
                                               new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
                                               new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
@@ -25,8 +26,7 @@ namespace GildedRose.Console
                                                   },
                                               new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
                                           }
-
-                          };
+            };
 
             app.UpdateQuality();
 
@@ -44,7 +44,14 @@ namespace GildedRose.Console
                     {
                         if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            if (Items[i].Name == "Conjured Mana Cake" && Items[i].Quality > 1)
+                            {
+                                Items[i].Quality = Items[i].Quality - 2;
+                            }
+                            else
+                            {
+                                Items[i].Quality = Items[i].Quality - 1;
+                            }
                         }
                     }
                 }
@@ -90,7 +97,14 @@ namespace GildedRose.Console
                             {
                                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    if (Items[i].Name == "Conjured Mana Cake" && Items[i].Quality > 1)
+                                    {
+                                        Items[i].Quality = Items[i].Quality - 2;
+                                    }
+                                    else
+                                    {
+                                        Items[i].Quality = Items[i].Quality - 1;
+                                    }
                                 }
                             }
                         }
@@ -112,13 +126,24 @@ namespace GildedRose.Console
 
     }
 
+    /// <summary>
+    /// A class to represent items sold in the Gilded Rose Inn
+    /// </summary>
     public class Item
     {
+        /// <summary>
+        /// Gets or sets the name of the item
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of days to sell the item
+        /// </summary>
         public int SellIn { get; set; }
 
+        /// <summary>
+        /// Gets or sets how valuable the item is
+        /// </summary>
         public int Quality { get; set; }
     }
-
 }
