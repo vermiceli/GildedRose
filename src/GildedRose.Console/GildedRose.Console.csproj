@@ -41,6 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgedBrieUpdateQualityStrategy.cs" />
+    <Compile Include="ConcertUpdateQualityStrategy.cs" />
+    <Compile Include="ConjuredUpdateQualityStrategy.cs" />
+    <Compile Include="LegendaryUpdateQualityStrategy.cs" />
+    <Compile Include="DefaultUpdateQualityStrategy.cs" />
+    <Compile Include="ItemExtension.cs" />
+    <Compile Include="IUpdateQualityStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
